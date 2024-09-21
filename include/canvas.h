@@ -54,6 +54,9 @@ public:
     bool& stats();
     const bool& stats() const;
 
+    void setFullscreen(bool fullscreen);
+    const bool& fullscreen() const;
+
     void run();
     void run(std::function<void(float deltaTime)> update);
     void run(std::function<void(float deltaTime)> update, Controller& controller);

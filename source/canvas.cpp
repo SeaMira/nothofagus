@@ -84,6 +84,16 @@ const bool& Canvas::stats() const
     return mCanvasImpl->stats();
 }
 
+void Canvas::setFullscreen(bool fullscreen)
+{
+    mCanvasImpl->setFullscreen(fullscreen);
+}
+
+const bool& Canvas::fullscreen() const
+{
+    return mCanvasImpl->fullscreen();
+}
+
 void Canvas::run()
 {
     auto update = [](float deltaTime){};

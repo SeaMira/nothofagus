@@ -39,6 +39,9 @@ public:
     bool& stats();
     const bool& stats() const;
 
+    void setFullscreen(bool fullscreen);
+    const bool& fullscreen() const;
+
     void run(std::function<void(float deltaTime)> update, Controller& controller);
 
     void close();
@@ -48,6 +51,7 @@ private:
     std::string mTitle;
     glm::vec3 mClearColor;
     unsigned int mPixelSize;
+    bool mFullscreen;
 
     TextureContainer mTextures;
     BellotaContainer mBellotas;
