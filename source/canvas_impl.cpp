@@ -243,6 +243,29 @@ const bool& Canvas::CanvasImpl::stats() const
     return mStats;
 }
 
+void Canvas::CanvasImpl::setFullscreen(bool fullscreen)
+{
+    if (mFullscreen == fullscreen)
+        return;
+
+    if (fullscreen)
+    {
+        GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+        glfwSetWindowMonitor(mWindow->glfwWindow, monitor, 0, 0, mScreenSize.width * mPixelSize, mScreenSize.height * mPixelSize, GLFW_DONT_CARE);
+    }
+    else
+    {
+        glfwSetWindowMonitor(mWindow->glfwWindow, NULL, 100, 100, mScreenSize.width * mPixelSize, mScreenSize.height * mPixelSize, 0);
+    }
+
+    mFullscreen = fullscreen;
+}
+
+const bool& Canvas::CanvasImpl::fullscreen() const
+{
+    return mFullscreen;
+}
+
 //void setupVAO(DMesh& dMesh, GPUID shaderProgram)
 void setupVAO(DMesh& dmesh, unsigned int shaderProgram)
 {

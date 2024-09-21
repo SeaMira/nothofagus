@@ -63,6 +63,7 @@ int main()
     float time = 0.0f;
     bool rotate = true;
     bool visible = true;
+    bool fullscreen = false;
 
     auto update = [&](float dt)
     {
@@ -74,14 +75,19 @@ int main()
         Nothofagus::Bellota& bellota3 = canvas.bellota(bellotaId3);
 
         ImGui::Begin("Hello there!");
-        ImGui::Text("May ImGui be with you...");
-        ImGui::Checkbox("Rotate?", &rotate);
-        if (rotate)
         {
-            bellota3.transform().angle() = 0.1f * time;
+            ImGui::Text("May ImGui be with you...");
+            ImGui::Checkbox("Rotate?", &rotate);
+            if (rotate)
+            {
+                bellota3.transform().angle() = 0.1f * time;
+            }
+            ImGui::Checkbox("Visible?", &visible);
+            bellota3.visible() = visible;
+
+            ImGui::Checkbox("Fullscreen?", &fullscreen);
+            canvas.setFullscreen(fullscreen);
         }
-        ImGui::Checkbox("Visible?", &visible);
-        bellota3.visible() = visible;
         ImGui::End();
     };
     
